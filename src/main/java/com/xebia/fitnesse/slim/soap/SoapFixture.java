@@ -155,4 +155,10 @@ public class SoapFixture {
         nsContext.clear();
     }
 
+    public void maintainHttpSession() {
+        String [] cookieHeaders = responseMessage.getMimeHeaders().getHeader("Set-Cookie");
+        if (cookieHeaders !=null && cookieHeaders.length>0) {
+            setHeaderValue("Cookie", cookieHeaders[0]);  // An array? what else could it have?? Should I StringUtil.merge? What separator? ;?
+        }
+    }
 }
