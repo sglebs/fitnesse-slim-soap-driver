@@ -50,7 +50,7 @@ public class SoapFixture {
         prepareForNewRequestMessage();
     }
 
-    private void prepareForNewRequestMessage() throws SOAPException {
+    public void prepareForNewRequestMessage() throws SOAPException {  //mqm - must be public so that it can be called in a Suite / reused
         SOAPMessage newRequestMessage = messageFactory.createMessage();
         for (Entry<String, String> namespace : nsContext.allNamespaces()) {
             newRequestMessage.getSOAPBody().addNamespaceDeclaration(namespace.getKey(), namespace.getValue());
